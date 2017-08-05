@@ -1,0 +1,17 @@
+#activemq
+spring:
+  activemq:
+    broker-url: tcp://mqserver:61616
+    user: mqserver
+    password: 13925268592
+    in-memory: true
+    enabled: false
+  jms:
+    pub-sub-domain: false #关闭订阅模式支持
+  thymeleaf:
+    encoding: UTF-8
+    cache: false #关闭缓存
+#server
+server:
+  port: 8080
+  context-path: /
