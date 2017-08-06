@@ -1,0 +1,21 @@
+#activemq
+spring:
+  activemq:
+    broker-url: tcp://mqserver:61616
+    user: mqserver
+    password: ENC(QMIU7GhWPu58lVPBeQvgY63v9rPA0j55) #该密码是由jasypt处理过的加密串
+    in-memory: true
+    enabled: false
+  jms:
+    pub-sub-domain: true #开启订阅模式支持
+  thymeleaf:
+    encoding: UTF-8
+    cache: false #关闭缓存
+#server
+server:
+  port: 8080
+  context-path: /
+#jasypt
+jasypt:
+  encryptor:
+    password: F2lLkryMwOAtC39cW67N #可以理解为jasypt的加密盐
