@@ -3,7 +3,7 @@ spring:
   activemq:
     broker-url: tcp://mqserver:61616
     user: mqserver
-    password: 123132
+    password: ENC(QMIU7GhWPu58lVPBeQvgY63v9rPA0j55) #该密码是由jasypt处理过的加密串
     in-memory: true
     enabled: false
   jms:
@@ -15,3 +15,7 @@ spring:
 server:
   port: 8080
   context-path: /
+#jasypt
+jasypt:
+  encryptor:
+    password: F2lLkryMwOAtC39cW67N #可以理解为jasypt的加密盐
