@@ -8,9 +8,6 @@ spring:
     enabled: false
   jms:
     pub-sub-domain: true #开启订阅模式支持
-  thymeleaf:
-    encoding: UTF-8
-    cache: false #关闭缓存
 #server
 server:
   port: 8080
@@ -18,4 +15,7 @@ server:
 #jasypt
 jasypt:
   encryptor:
-    password: F2lLkryMwOAtC39cW67N #可以理解为jasypt的加密盐
+    #可以理解为jasypt的加密盐
+    password: F2lLkryMwOAtC39cW67N
+
+
