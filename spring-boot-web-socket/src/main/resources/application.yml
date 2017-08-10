@@ -1,0 +1,8 @@
+spring:
+  thymeleaf:
+    encoding: UTF-8
+    cache: false #关闭缓存
+#server
+server:
+  port: 8080
+  context-path: /
