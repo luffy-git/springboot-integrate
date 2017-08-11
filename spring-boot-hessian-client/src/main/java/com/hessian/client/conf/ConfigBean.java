@@ -16,7 +16,7 @@ import org.springframework.remoting.caucho.HessianProxyFactoryBean;
 public class ConfigBean {
 
 
-    /** 远程地址 */
+    /** 远程服务地址 */
     private static final String REMOTE_SERVER_URL="http://localhost:8082";
     /** 远程service的Name */
     private static final String SERVER_NAME_TEST_SERVICE = "/TestService";
