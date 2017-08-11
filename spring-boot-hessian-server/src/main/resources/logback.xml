@@ -2,7 +2,8 @@
 <configuration scan="true" scanPeriod="10 seconds">
     <!--绝对路径定义-->
     <property name="log.path" value="E:/P_LOG" />
-    <property name="project.artifactId" value="activemq-subscribe" />
+    <!--项目名-->
+    <property name="project.artifactId" value="spring-boot-hessian-client" />
     <!-- Simple file output -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!--<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">-->

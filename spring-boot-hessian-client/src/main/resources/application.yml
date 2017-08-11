@@ -1,0 +1,6 @@
+#server
+server:
+  port: 8081
+  context-path: /
+
+

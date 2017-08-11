@@ -93,7 +93,7 @@ public class ActivemqSubscribeApplicationTests {
      */
     @Test
     public void testController(){
-        String forObject = template.getForObject("http://localhost:8082/hello", String.class);
+        String forObject =""; //template.getForObject("http://localhost:8082/hello", String.class);
         LOG.info(forObject);
     }
 
