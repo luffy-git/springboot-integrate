@@ -1,0 +1,19 @@
+#server
+server:
+  port: 8080
+  servlet:
+    context-path: /
+spring:
+  thymeleaf:
+    encoding: UTF-8
+    cache: false #关闭缓存
+#mq配置
+com:
+  mqtt:
+    host: tcp://127.0.0.1:61613
+    clientId: mqttjs_e8022a4d0b
+    topic: good,test,yes
+    userName: admin
+    passWord: password
+    timeOut: 10
+    keepAlive: 20

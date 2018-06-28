@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8" />
+<head>
+    <title>Home</title>
+    <script th:src="@{/jquery-1.4.2.min.js}"></script>
+    <script th:src="@{/mq/amq_jquery_adapter.js}"></script>
+    <script th:src="@{/mq/amq.js}"></script>
+</head>
+<body>
+<p>
+    聊天室
+</p>
+
+<form id="wiselyForm">
+    <textarea rows="4" cols="60" name="text"></textarea>
+    <input type="submit"/>
+</form>
+
+<script th:inline="javascript">
+    window.onload = function() {
+        var amq = org.activemq.Amq;
+        amq.init({ uri: '/amq', logging: false, timeout: 45, clientId:'test1' });
+        var myHandler ={
+            rcvMessage: function(message){
+                //接收到消息后，自己的业务处理逻辑
+            }
+        };
+        amq.addListener('test1','topic://test',myHandler.rcvMessage);
+        //test1为消费者的一个ID,接受到消息回调时会用到作为标识
+        //topic://msg表示主题订阅目的地
+    };
+</script>
+
+<div id="output"></div>
+</body>
+</html>
