@@ -7,6 +7,9 @@ spring:
   thymeleaf:
     encoding: UTF-8
     cache: false #关闭缓存
+  mvc:
+    async:
+      request-timeout: 20
 #mq配置
 com:
   mqtt:

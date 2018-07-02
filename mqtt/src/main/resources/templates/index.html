@@ -13,23 +13,42 @@
     聊天室
 </p>
 
-<form id="wiselyForm">
-    <textarea rows="4" cols="60" name="text"></textarea>
-    <input type="submit"/>
-</form>
+<div id="wiselyForm">
+    <textarea rows="4" cols="60" name="text" id="content"></textarea>
+    <input type="button" value="发送" id="send"/>
+</div>
 
 <script th:inline="javascript">
-    window.onload = function() {
+    window.onload = function(e) {
         var amq = org.activemq.Amq;
-        amq.init({ uri: '/amq', logging: false, timeout: 45, clientId:'test1' });
+        var cliendId = new Date().getTime().toString();
+        console.log("clientId:"+cliendId);
+        amq.init({ uri: 'amq', logging: true, timeout: 20, clientId: cliendId });
         var myHandler ={
             rcvMessage: function(message){
                 //接收到消息后，自己的业务处理逻辑
+                console.log('收到推送消息#:'+message.getAttribute('payload'));
             }
         };
-        amq.addListener('test1','topic://test',myHandler.rcvMessage);
+        amq.addListener(cliendId,'topic://luffy.test',myHandler.rcvMessage);
         //test1为消费者的一个ID,接受到消息回调时会用到作为标识
         //topic://msg表示主题订阅目的地
+        $('#send').click(function () {
+            var msg = $('#content').val();
+            console.log('推送消息#:' + msg)
+            amq.sendMessage('topic://luffy.test',"<message  payload='"+msg+"'/>");
+//            $.ajax({
+//                type : 'GET',
+//                url : '/mqtt/test',
+//                data : {'content':$('#content').val()},
+//                success:function () {
+//                    console.log('success')
+//                },
+//                error:function () {
+//                    console.log('error')
+//                }
+//            });
+        });
     };
 </script>
 

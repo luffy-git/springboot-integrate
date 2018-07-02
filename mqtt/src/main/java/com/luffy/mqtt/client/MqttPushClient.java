@@ -1,6 +1,5 @@
 package com.luffy.mqtt.client;
 
-import com.luffy.mqtt.constant.Constant;
 import com.luffy.mqtt.model.message.PushPayload;
 import com.luffy.mqtt.util.PropertiesUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -115,14 +114,23 @@ public class MqttPushClient {
 
     public static void main(String[] args) throws Exception {
 
-        String kdTopic = Constant.Topic.DEFAULT_TOPIC;
+        String kdTopic = "luffy/test";
         MqttPushClient.getInstance().subscribe(kdTopic);
-//
-//        PushPayload pushMessage = PushPayload.getPushPayloadBuider().setMobile("15345715326")
-//                .setContent("designModel")
-//                .bulid();
-//        MqttPushClient.getInstance().publish(kdTopic, pushMessage);
-//        MqttPushClient.getInstance().subscribe(kdTopic);
+
+        PushPayload pushMessage = PushPayload.getPushPayloadBuider().setMobile("15345715326")
+                .setContent("designModel")
+                .bulid();
+        MqttPushClient.getInstance().publish(kdTopic, pushMessage);
+        MqttPushClient.getInstance().subscribe(kdTopic);
+        MqttPushClient.getInstance().publish(kdTopic, pushMessage);
+        MqttPushClient.getInstance().publish(kdTopic, pushMessage);
+        MqttPushClient.getInstance().publish(kdTopic, pushMessage);
+        MqttPushClient.getInstance().publish(kdTopic, pushMessage);
+        MqttPushClient.getInstance().publish(kdTopic, pushMessage);
+        MqttPushClient.getInstance().publish(kdTopic, pushMessage);
+        MqttPushClient.getInstance().publish(kdTopic, pushMessage);
+        MqttPushClient.getInstance().publish(kdTopic, pushMessage);
+        MqttPushClient.getInstance().publish(kdTopic, pushMessage);
 
 
     }

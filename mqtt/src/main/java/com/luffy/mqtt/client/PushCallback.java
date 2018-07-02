@@ -1,5 +1,6 @@
 package com.luffy.mqtt.client;
 
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
@@ -26,7 +27,17 @@ public class PushCallback implements MqttCallback {
     public void messageArrived(String topic, MqttMessage message) throws Exception {
         // subscribe后得到的消息会执行到这里面
         log.info("接收消息主题 : " + topic);
+        log.info("接收消息ID : " + message.getId());
         log.info("接收消息Qos : " + message.getQos());
         log.info("接收消息内容 : " + new String(message.getPayload()));
+    }
+
+    public static void main(String[] args) {
+        MqttMessage mqttMessage = new MqttMessage();
+        mqttMessage.setId(1231312);
+        mqttMessage.setPayload("ceshi".getBytes());
+        mqttMessage.setQos(0);
+        mqttMessage.setRetained(true);
+        System.out.println(JSON.toJSONString(mqttMessage));
     }
 }

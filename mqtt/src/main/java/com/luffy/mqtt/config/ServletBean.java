@@ -1,5 +1,7 @@
 package com.luffy.mqtt.config;
 
+import com.luffy.mqtt.util.PropertiesUtil;
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.web.AjaxServlet;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -28,8 +30,6 @@ public class ServletBean {
 
     @Bean
     public ServletContextInitializer initializer() {
-        return servletContext -> {
-            servletContext.setInitParameter("org.apache.activemq.brokerURL", "tcp://127.0.0.1:61613");
-        };
+        return servletContext -> servletContext.setAttribute("org.apache.activemq.connectionFactory",new ActiveMQConnectionFactory(PropertiesUtil.MQTT_USER_NAME, PropertiesUtil.MQTT_PASSWORD, PropertiesUtil.MQTT_HOST));
     }
 }
