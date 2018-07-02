@@ -1,5 +1,7 @@
 package luffy.filter;
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.servlet.*;
 import java.io.IOException;
 
@@ -11,6 +13,7 @@ import java.io.IOException;
  */
 
 //@WebFilter(urlPatterns = "/*") 单个Filter使用这个注解即可
+@Slf4j
 public class LoginFilter implements Filter{
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -19,7 +22,7 @@ public class LoginFilter implements Filter{
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("自定义过滤器->doFilter");
+        log.info("登录过滤器->doFilter");
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
