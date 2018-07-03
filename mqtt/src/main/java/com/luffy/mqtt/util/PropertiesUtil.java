@@ -5,7 +5,10 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * Created by Jimmy on 2018/6/28
+ * @description 读取配置文件
+ * @fiel com.luffy.mqtt.util.PropertiesUtil
+ * @author Jimmy
+ * @date 2018-07-03 14:04:48
  */
 public class PropertiesUtil {
 
@@ -17,16 +20,16 @@ public class PropertiesUtil {
     public static final int MQTT_KEEP_ALIVE;
 
 
-    private static  Properties properties;
+    private static  Properties PROPERTIES;
 
     static {
         loadMqttProperties();
-        MQTT_HOST = properties.getProperty("host");
-        MQTT_CLIENT_ID = properties.getProperty("clientId");
-        MQTT_USER_NAME = properties.getProperty("userName");
-        MQTT_PASSWORD = properties.getProperty("passWord");
-        MQTT_TIMEOUT = Integer.valueOf(properties.getProperty("timeOut"));
-        MQTT_KEEP_ALIVE = Integer.valueOf(properties.getProperty("keepAlive"));
+        MQTT_HOST = PROPERTIES.getProperty("host");
+        MQTT_CLIENT_ID = PROPERTIES.getProperty("clientId");
+        MQTT_USER_NAME = PROPERTIES.getProperty("userName");
+        MQTT_PASSWORD = PROPERTIES.getProperty("passWord");
+        MQTT_TIMEOUT = Integer.valueOf(PROPERTIES.getProperty("timeOut"));
+        MQTT_KEEP_ALIVE = Integer.valueOf(PROPERTIES.getProperty("keepAlive"));
 
     }
 
@@ -39,18 +42,18 @@ public class PropertiesUtil {
      * @return java.util.Properties
      */
     private static Properties loadMqttProperties() {
-        if(null == properties){
+        if(null == PROPERTIES){
             synchronized (PropertiesUtil.class){
-                if(null == properties){
-                    properties = new Properties();
+                if(null == PROPERTIES){
+                    PROPERTIES = new Properties();
                     try (InputStream inputstream = PropertiesUtil.class.getResourceAsStream("/application.yml")){
-                        properties.load(inputstream);
+                        PROPERTIES.load(inputstream);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                 }
             }
         }
-        return properties;
+        return PROPERTIES;
     }
 }
